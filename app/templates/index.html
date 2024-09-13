@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connectivity Test</title>
+</head>
+<body>
+    <h1>Connectivity Test</h1>
+    <form action="/test" method="post">
+        <label for="url">URL:</label>
+        <input type="text" id="url" name="url" required>
+        <br>
+        <label for="port">Port:</label>
+        <input type="text" id="port" name="port">
+        <br>
+        <input type="checkbox" id="nslookup" name="nslookup">
+        <label for="nslookup">NSLookup</label>
+        <br>
+        <input type="checkbox" id="curl" name="curl">
+        <label for="curl">Curl</label>
+        <br>
+        <input type="checkbox" id="telnet" name="telnet">
+        <label for="telnet">Telnet</label>
+        <br>
+        <input type="checkbox" id="ping" name="ping">
+        <label for="ping">Ping</label>
+        <br>
+        <button type="submit">Test</button>
+    </form>
+    <hr>
+    <h2>Results:</h2>
+    <pre id="results"></pre>
+
+    <script>
+        const form = document.querySelector('form');
+        const results = document.getElementById('results');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const response = await fetch('/test', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+            results.textContent = `NSLookup:\n${result.nslookup}\n\nCurl:\n${result.curl}\n\nTelnet:\n${result.telnet}\n\nPing:\n${result.ping}`;
+        });
+    </script>
+</body>
+</html>
