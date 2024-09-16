@@ -4,48 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connectivity Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        h1 { text-align: center; }
+        form { display: flex; flex-direction: column; }
+        label { margin-bottom: 10px; }
+        input, select, button { padding: 10px; margin-bottom: 20px; }
+        .checkboxes { display: flex; justify-content: space-between; }
+        textarea { width: 100%; height: 200px; }
+
+        .loading {
+            display: none;
+            text-align: center;
+        }
+        .loading img {
+            width: 50px;
+            height: 50px;
+        }
+
+
+    </style>
+    <link rel="stylesheet" href="../static/style.css">
+    <script>
+        function showLoading() {
+            document.getElementById("loading").style.display = "block";
+        }
+
+        function hideLoading() {
+            document.getElementById("loading").style.display = "none";
+        }
+
+        // Automatically hide the loader when the window is fully loaded
+        window.onload = function() {
+            hideLoading();
+        };
+    </script>
 </head>
 <body>
-    <h1>Connectivity Test</h1>
-    <form action="/test" method="post">
-        <label for="url">URL:</label>
-        <input type="text" id="url" name="url" required>
-        <br>
-        <label for="port">Port:</label>
-        <input type="text" id="port" name="port">
-        <br>
-        <input type="checkbox" id="nslookup" name="nslookup">
-        <label for="nslookup">NSLookup</label>
-        <br>
-        <input type="checkbox" id="curl" name="curl">
-        <label for="curl">Curl</label>
-        <br>
-        <input type="checkbox" id="telnet" name="telnet">
-        <label for="telnet">Telnet</label>
-        <br>
-        <input type="checkbox" id="ping" name="ping">
-        <label for="ping">Ping</label>
-        <br>
-        <button type="submit">Test</button>
-    </form>
-    <hr>
-    <h2>Results:</h2>
-    <pre id="results"></pre>
+    <div class="container">
+        <h1>Connectivity Test</h1>
+        <form method="POST">
+            <label for="url">Enter URL or IP:</label>
+            <input type="text" name="url" required>
 
-    <script>
-        const form = document.querySelector('form');
-        const results = document.getElementById('results');
+            <label for="port">Enter Port (for Telnet):</label>
+            <input type="number" name="port">
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formData = new FormData(form);
-            const response = await fetch('/test', {
-                method: 'POST',
-                body: formData
-            });
-            const result = await response.json();
-            results.textContent = `NSLookup:\n${result.nslookup}\n\nCurl:\n${result.curl}\n\nTelnet:\n${result.telnet}\n\nPing:\n${result.ping}`;
-        });
-    </script>
+            <div class="checkboxes">
+                <label>
+                    <input type="checkbox" name="nslookup" value="on"> Nslookup
+                </label>
+                <label>
+                    <input type="checkbox" name="curl" value="on"> Curl
+                </label>
+                <label>
+                    <input type="checkbox" name="telnet" value="on"> Telnet
+                </label>
+                <label>
+                    <input type="checkbox" name="ping" value="on"> ping
+                </label>
+            </div>
+
+            <button type="submit">Run Test</button>
+        </form>
+
+        <div id="loading" class="loading">
+            <p>Processing, please wait...</p>
+            <img src="{{ url_for('static', filename='img/loading.gif') }}" alt="Loading...">
+        </div>
+
+        {% if result %}
+        <h2>Results:</h2>
+        <textarea readonly>{{ result }}</textarea>
+        {% endif %}
+    </div>
 </body>
 </html>
