@@ -2,6 +2,9 @@
 
 This application created for test the network connections.
 
-'''
-docker build -t connectivitytest . 
-'''
+
+## how to build docker image
+
+```shell
+docker build -t connectivitytest .
+```
