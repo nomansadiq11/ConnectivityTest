@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: ""
+  repository: "nomansadiq11/connectivitytest"
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "network-connectivity-test-1.1"
+  tag: "v1.0.0"
 
 imagePullSecrets: []
 nameOverride: ""
