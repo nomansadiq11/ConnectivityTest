@@ -21,13 +21,18 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Extract tag
+      id: extract_tag
+      run: echo "TAG_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
         context: .
         push: true
-        tags: nomansadiq11/connectivitytest:${{ github.ref }} # Uses the tag name as the Docker tag
+        tags: |
+          nomansadiq11/connectivitytest:${{ env.TAG_NAME }}
+          nomansadiq11/connectivitytest:latest
 
     - name: Logout from Docker Hub
       run: docker logout
