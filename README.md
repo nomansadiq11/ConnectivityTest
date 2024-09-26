@@ -18,3 +18,9 @@ This application created for test the network communication between private netw
 ```shell
 docker build -t connectivitytest .
 ```
+
+## locally development
+
+```shell
+docker-compose up --build 
+```
