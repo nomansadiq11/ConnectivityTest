@@ -1,6 +1,9 @@
-# ConnectivityTest
+# Network Connectivity Test
 
-This application created for test the network communication between private network and internet.
+## Overview
+
+Test Network Connectivity in your private environment.
+This application give you option to test nslookup, curl, telnet and ping.
 
 ![](img/1.png)
 ![](img/2.png)
@@ -22,5 +25,5 @@ docker build -t connectivitytest .
 ## locally development
 
 ```shell
-docker-compose up --build 
+docker-compose up --build
 ```
