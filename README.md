@@ -22,7 +22,7 @@ This application give you option to test nslookup, curl, telnet and ping.
 docker build -t connectivitytest .
 ```
 
-## locally development
+## local development
 
 ```shell
 docker-compose up --build
