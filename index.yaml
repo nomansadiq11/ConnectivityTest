@@ -1,0 +1,12 @@
+apiVersion: v1
+entries:
+  connectivitytest:
+    - created: 2014-10-01T16:00:00.499814565-06:00
+      description: Network connectivity test application
+      digest: 99c76e403d752c84ead610644d4b1c2f2b453a74b921f422b9dcb8a7c8b559cd
+      home: https://helm.sh/helm
+      name: connectivitytest
+      urls:
+      - connectivitytest-1.0.0.tgz
+      version: 1.0.0
+generated: 2014-10-01T16:00:00.499814565-06:00
