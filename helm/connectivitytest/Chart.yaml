@@ -1,6 +1,6 @@
 apiVersion: v2
 name: connectivitytest
-description: A Helm chart for Kubernetes
+description: Test Network Connectivity in your private environment. This application give you option to test nslookup, curl, telnet and ping.
 
 # A chart can be either an 'application' or a 'library' chart.
 #
