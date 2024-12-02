@@ -1,6 +1,6 @@
 # Network Connectivity Test
 
-[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/connectivitytest)](https://artifacthub.io/packages/search?repo=connectivitytest)
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/networkconnectivitytest)](https://artifacthub.io/packages/search?repo=networkconnectivitytest)
 
 ## Overview
 
