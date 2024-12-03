@@ -10,7 +10,3 @@ entries:
       - connectivitytest-1.0.0.tgz
       version: 1.0.0
 generated: 2014-10-01T16:00:00.499814565-06:00
-repositoryID: nomansadiq11
-owners: # (optional, used to claim repository ownership)
-  - name: nomansadiq11
-    email: nomi.cs786@gmail.com
